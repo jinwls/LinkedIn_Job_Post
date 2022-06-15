@@ -23,8 +23,8 @@
 #         token = response.css('form#otp-generation input::attr(value)').extract_first()
 #         return FormRequest.from_response(response, formdata={
 #             'csrfToken' : token,
-#             'session_key' : 'chlaudwls222@naver.com',
-#             'session_password' : 'm21145011-M'
+#             'session_key' : '',
+#             'session_password' : ''
 #         }, callback = self.start_scraping)
     
 #     def start_scraping(self, response):
