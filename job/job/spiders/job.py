@@ -3,7 +3,6 @@ import time
 import json
 from job.items import JobItem
 from scrapy.http import Request
-from scrapy.http import FormRequest
 from scrapy.loader import ItemLoader
 
 
@@ -18,17 +17,21 @@ class LinkedinScrape(scrapy.Spider):
         print(response)
         for link in response.css('div.base-card a::attr(href)'):
             yield response.follow(link.get(), callback=self.parse_lists)
-            time.sleep(0.6)
+            time.sleep(0.5)
 
 
     def parse_lists(self, response):
         l = ItemLoader(item = JobItem(), selector = response)
 
         l.add_css('title', 'h1 ::text')
+        l.add_css('job', 'h1 ::text')
         l.add_css('company', 'a.topcard__org-name-link ::text')
-        l.add_css('location','span.topcard__flavor--bullet ::text')
-        l.add_css('crit_head', 'li.description__job-criteria-item h3 ::text')
-        l.add_css('crit_text', 'li.description__job-criteria-item span ::text')
+        l.add_css('city','span.topcard__flavor--bullet ::text')
+        l.add_css('state','span.topcard__flavor--bullet ::text')
+        l.add_css('level', 'li.description__job-criteria-item span ::text')
+        l.add_css('type', 'li.description__job-criteria-item span ::text')
+        l.add_css('function', 'li.description__job-criteria-item span ::text')
+        l.add_css('industry', 'li.description__job-criteria-item span ::text')
         l.add_css('detail', 'div.show-more-less-html__markup ::text')
 
         script = response.css('script::text')[1].extract()
