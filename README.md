@@ -186,6 +186,6 @@ You could also add an additional SQL statement to get rid of the duplicate value
 
 Finally, close the commuinication with the database server by calling the `close()` method of the `cursor` and the `connection` objects. Also, to apply the pipeline , make sure to assign it in the `setting.py`.
 
-'ITEM_PIPELINES = {'job.pipelines.JobPostgreSQL': 300}`
+```ITEM_PIPELINES = {'job.pipelines.JobPostgreSQL': 300}```
 
 Check [pipelines.py](https://github.com/jinwls/LinkedIn_Job_Post/blob/main/job/job/settings.py) for more details.
