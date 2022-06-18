@@ -191,3 +191,5 @@ ITEM_PIPELINES = {'job.pipelines.JobPostgreSQL': 300}
 ```
 
 Check [pipelines.py](https://github.com/jinwls/LinkedIn_Job_Post/blob/main/job/job/settings.py) for more details.
+
+And that's it!! Run the file and get your own data of LinkedIn job posts!!
