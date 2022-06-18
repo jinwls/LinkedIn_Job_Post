@@ -1,6 +1,6 @@
 # Overview
 
-  I came to wonder in what skills a data analyst or any other data related job needed. So to figure the problem, I needed data of the job description for the right job. So, I decided to scrape some job postings from LinkedIn using Scrapy.
+  I came to wonder in what skills a data analyst or any other data related job needed. So to figure out the problem, I needed data of job descriptions. So, I decided to scrape some job postings from LinkedIn using Scrapy.
 
 
 ### Web Scraping
@@ -49,7 +49,7 @@ After that, go to the **Network** tab and scroll the site to the bottom to see t
     yield l.load_item()
 ```
 
-  I have used the built-in functions in scrapy, `Items` and `Item Loaders`, to contain data. `Items` provide the container for the data scrapped and `Item Loaders` provide the mechanism for populating the item containers. Good thing about using `Item Loaders` is that you can automate common tasks like cleaning the extracted data before containing it.
+  I have used the built-in functions in scrapy, `Items` and `Item Loaders`, to contain data. `Items` provide the containers for the data scrapped and `Item Loaders` provide the mechanism for populating the item containers. Good thing about using `Item Loaders` is that you can automate common tasks like cleaning the extracted data before containing it.
   
 Check [items.py](https://github.com/jinwls/LinkedIn_Job_Post/blob/main/job/job/items.py) and [job.py](https://github.com/jinwls/LinkedIn_Job_Post/blob/main/job/job/spiders/job.py) for more details. 
 
@@ -137,7 +137,7 @@ See [This Publication](https://towardsdatascience.com/cleaning-preprocessing-tex
 );
 
 ```
-After creating the table, to connect to the postgreSQL database server in python, you need `psycopg` library. Use the `connect()` function of the `psycopg2` modeule. By using the `connection` function, you can create new `cursor` to execute any SQL statements. 
+After creating the table, to connect to the postgreSQL database server in python, you need `psycopg` library. Use the `connect()` function of the `psycopg2` module. By using the `connection` function, you can create new `cursor` to execute any SQL statements. 
 
 ```python     
     def get_connection(self):
@@ -184,7 +184,7 @@ You could also add an additional SQL statement to get rid of the duplicate value
                     """)
 ```
 
-Finally, close the commuinication with the database server by calling the `close()` method of the `cursor` and the `connection` objects. Also, to apply the pipeline , make sure to assign it in the `setting.py`.
+Finally, close the commuinication with the database server by calling the `close()` method of the `cursor` and the `connection` objects. Also, to apply the pipeline , make sure to assign it in the `setting.py` using the following line of codes.
 
 ```python
 ITEM_PIPELINES = {'job.pipelines.JobPostgreSQL': 300}
